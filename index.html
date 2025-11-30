@@ -15,14 +15,15 @@
             --text-color: #333333;
             --highlight-red: #e74c3c;   /* 警示紅 */
             --trend-bg: #fff8e1;        /* 趨勢區塊底色 */
-            --video-bg: #e3f2fd;        /* 影片區塊底色 */
+            --line-green: #06c755;      /* LINE 綠色 */
         }
 
         body {
             font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
             background-color: var(--bg-color);
             margin: 0;
-            padding: 20px;
+            /* 底部留白 100px，避免被懸浮按鈕擋住內容 */
+            padding: 20px 20px 100px 20px;
             color: var(--text-color);
             line-height: 1.6;
         }
@@ -135,7 +136,7 @@
             line-height: 1.4;
         }
 
-        /* --- 實例分析區塊 (Rental & Market) --- */
+        /* --- 實例分析區塊 --- */
         .case-study-box {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -232,8 +233,60 @@
         }
         .line-btn:hover { background-color: #05a546; transform: scale(1.05); }
 
+        /* --- 懸浮按鈕區塊 (Sticky Bottom) --- */
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 15px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            z-index: 999;
+            box-sizing: border-box;
+        }
+
+        .sticky-btn {
+            flex: 1;
+            max-width: 300px;
+            padding: 12px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            text-align: center;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-line-sticky {
+            background-color: #06c755;
+            color: white;
+            box-shadow: 0 4px 8px rgba(6, 199, 85, 0.3);
+        }
+        
+        .btn-review-sticky {
+            background-color: #fff;
+            color: #333;
+            border: 2px solid #f1c40f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .sticky-btn:hover { transform: scale(1.05); }
+
+        /* RWD */
         @media (min-width: 768px) {
             .video-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .sticky-btn { font-size: 0.9em; padding: 12px 5px; }
         }
     </style>
 </head>
@@ -296,14 +349,17 @@
 
     <div class="case-study-box" style="margin-top: 30px; background: linear-gradient(to right, #f8f9fa, #fff);">
         <h3 class="case-title">💰 買賣房產三大稅務階段</h3>
-        <p>政府從「買」、「持有」、「賣」都在收錢，千萬別漏報！</p>
+        <p>政府從「買」、「持有」、「賣」三個階段都在收錢，千萬別漏報！</p>
         <ul style="margin-top:10px; padding-left:20px; line-height:1.8;">
             <li>📍 <strong>持有房產：</strong>房屋稅 + 地價稅 (每年繳)</li>
             <li>📍 <strong>買賣過程：</strong>契稅 + 印花稅 (簽約過戶繳)</li>
             <li>📍 <strong>賣屋所得：</strong>房地合一稅 (獲利繳，最高45%)</li>
         </ul>
-        <div style="margin-top:10px; font-size:0.9em; color:#666;">
-            想了解更多細節？ <a href="https://youtu.be/1X-3-p50Qt8" target="_blank" style="color:#d4a017; font-weight:bold;">👉 點此觀看詳細稅務解說影片</a>
+        <div style="margin-top:15px; font-size:0.95em;">
+            🎥 <strong>詳細解析影片：</strong><br>
+            <a href="https://youtu.be/1X-3-p50Qt8" target="_blank" style="color:#d4a017; font-weight:bold; text-decoration:none; display:inline-block; margin-top:5px;">
+                👉 持有不動產及移轉，要繳納哪些稅金呢❓ (點此觀看)
+            </a>
         </div>
     </div>
 
@@ -380,6 +436,16 @@
         </div>
     </footer>
 
+</div>
+
+<div class="sticky-footer">
+    <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="sticky-btn btn-line-sticky">
+        💬 加入VIP社群
+    </a>
+    
+    <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="sticky-btn btn-review-sticky">
+        🌟 給予五星好評
+    </a>
 </div>
 
 </body>
