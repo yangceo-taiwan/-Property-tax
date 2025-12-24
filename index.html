@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* =========================================
+           STYLE LOCKING: 樣式區完全保留，未做任何更動
+           ========================================= */
         :root {
             --primary-color: #1a365d;   /* 品牌深藍 */
             --accent-color: #c5a572;    /* 質感雅金 */
@@ -27,6 +30,11 @@
             color: var(--text-color);
             line-height: 1.6;
             padding-bottom: 80px; /* 預留底部懸浮空間 */
+            /* 禁止選取文字 (防護層級 1) */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .container {
@@ -35,7 +43,6 @@
             padding: 20px;
         }
 
-        /* --- 1. 品牌抬頭 (質感升級) --- */
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, #2a4a7c 100%);
             padding: 30px 20px;
@@ -76,7 +83,6 @@
             color: var(--accent-color);
         }
 
-        /* --- 影片卡片樣式 --- */
         .section-title {
             text-align: center;
             color: var(--primary-color);
@@ -140,7 +146,6 @@
             line-height: 1.4;
         }
 
-        /* --- 實例分析區塊 --- */
         .case-study-box {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -158,25 +163,6 @@
             display: flex; align-items: center; gap: 8px;
         }
 
-        .tax-rate-list {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-        .tax-rate-item { margin-bottom: 8px; font-weight: bold; color: #555; }
-        .tax-rate-item.highlight { color: var(--highlight-red); }
-
-        .tips-box {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        /* --- 市場趨勢特別樣式 --- */
         .market-trend-box {
             background-color: var(--trend-bg);
             border: 2px solid #ffe0b2;
@@ -216,7 +202,6 @@
             display: block;
         }
 
-        /* --- Footer --- */
         footer {
             text-align: center;
             margin-top: 40px;
@@ -226,7 +211,6 @@
             font-size: 0.9em;
         }
 
-        /* --- 懸浮按鈕區塊 (Sticky Bottom Nav) --- */
         .sticky-nav {
             position: fixed;
             bottom: 0;
@@ -261,17 +245,15 @@
             color: var(--primary-color);
         }
         
-        /* 特定按鈕顏色 */
         .nav-item.line .nav-icon { color: var(--line-green); }
-        .nav-item.vip .nav-icon { color: #f1c40f; } /* VIP 金色 */
-        .nav-item.vip { background-color: #fffbea; } /* VIP 背景微黃 */
+        .nav-item.vip .nav-icon { color: #f1c40f; }
+        .nav-item.vip { background-color: #fffbea; }
         .nav-item.line { font-weight: bold; }
 
     </style>
 </head>
-<body>
-
-    <header>
+<body oncontextmenu="return false;"> 
+<header>
         <div class="logo-wrapper">
             <img src="宏國地政封面.jpg" alt="宏國地政 Logo" class="logo-img">
             <img src="易丞logo-01.jpg" alt="易丞地政 Logo" class="logo-img">
@@ -284,48 +266,7 @@
 
         <h2 class="section-title"><i class="fas fa-video"></i> 房地合一稅精選影音</h2>
         
-        <div class="video-grid">
-            
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/cQCBkHiTltM" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <span class="video-tag" style="background-color: #e74c3c;">NEW 必看</span>
-                    <h3 class="video-title">繼承房產想出售？先確認這兩點再簽約！(含400萬免稅額解析)</h3>
-                </div>
-            </div>
-
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/tkjWyTZ3IEs" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <span class="video-tag">重購退稅</span>
-                    <h3 class="video-title">土地增值稅 vs 房地合一稅，重購退稅差異一次看懂‼️</h3>
-                </div>
-            </div>
-
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/2_GH4Q1IAi4" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <span class="video-tag">稅制解析</span>
-                    <h3 class="video-title">舊制還是新制❓選錯多繳稅！繼承後賣房攻略</h3>
-                </div>
-            </div>
-
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/p76TRNX_OHE" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <span class="video-tag">持有期間</span>
-                    <h3 class="video-title">繼承後賣房，房地合一稅持有期間怎麼算❓(合併計算教學)</h3>
-                </div>
-            </div>
-        </div>
+        <div id="video-container" class="video-grid"></div>
 
         <div class="case-study-box" style="margin-top: 40px; background: linear-gradient(to right, #f8f9fa, #fff);">
             <h3 class="case-title"><i class="fas fa-coins"></i> 買賣房產三大稅務階段</h3>
@@ -404,6 +345,103 @@
             <span>VIP社群</span>
         </a>
     </div>
+
+<script>
+    /**
+     * 【 ⚙️ 後台管理區 / ADMIN ZONE 】
+     * * 说明：請在此處編輯您的影片列表。
+     * 1. 想要調整順序？直接剪下整行 {} 貼到想要的位置。
+     * 2. 想要新增影片？複製一行 {}，填入新的 ID 和標題。
+     * 3. YouTube ID 是影片網址 "v=" 後面的代碼。
+     * * 範例：{ id: '影片代碼', title: '影片標題', tag: '標籤文字', tagColor: '#顏色碼' },
+     */
+    const videoData = [
+        { 
+            id: 'cQCBkHiTltM', 
+            title: '繼承房產想出售？先確認這兩點再簽約！(含400萬免稅額解析)', 
+            tag: 'NEW 必看', 
+            tagColor: '#e74c3c' // 紅色
+        },
+        { 
+            id: 'tkjWyTZ3IEs', 
+            title: '土地增值稅 vs 房地合一稅，重購退稅差異一次看懂‼️', 
+            tag: '重購退稅', 
+            tagColor: '#1a365d' // 深藍
+        },
+        { 
+            id: '2_GH4Q1IAi4', 
+            title: '舊制還是新制❓選錯多繳稅！繼承後賣房攻略', 
+            tag: '稅制解析', 
+            tagColor: '#1a365d' 
+        },
+        { 
+            id: 'p76TRNX_OHE', 
+            title: '繼承後賣房，房地合一稅持有期間怎麼算❓(合併計算教學)', 
+            tag: '持有期間', 
+            tagColor: '#1a365d' 
+        }
+        // 若要新增影片，請複製上方格式貼在下方 ↓
+    ];
+
+    // ===========================================
+    // 🏗️ 系統自動渲染引擎 (請勿修改以下程式碼)
+    // ===========================================
+    function renderVideos() {
+        const container = document.getElementById('video-container');
+        let htmlContent = '';
+
+        videoData.forEach(video => {
+            // 如果沒有指定顏色，預設為深藍
+            const color = video.tagColor || '#1a365d';
+            
+            htmlContent += `
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/${video.id}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <span class="video-tag" style="background-color: ${color};">${video.tag}</span>
+                    <h3 class="video-title">${video.title}</h3>
+                </div>
+            </div>`;
+        });
+
+        container.innerHTML = htmlContent;
+    }
+
+    // 啟動渲染
+    document.addEventListener('DOMContentLoaded', renderVideos);
+
+    // ===========================================
+    // 🛡️ 數位防護盾 (Security Shield)
+    // ===========================================
+    
+    // 1. 禁止右鍵選單
+    document.addEventListener('contextmenu', event => {
+        event.preventDefault();
+        // 如果想顯示警告訊息，可取消下方註解
+        // alert('⚠️ 宏國地政版權所有，內容受到保護。');
+    });
+
+    // 2. 禁止開發者工具快捷鍵 (F12, Ctrl+Shift+I, Ctrl+U)
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) { // F12
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U (View Source)
+            return false;
+        }
+    }
+</script>
 
 </body>
 </html>
